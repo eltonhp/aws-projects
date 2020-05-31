@@ -1,0 +1,105 @@
+---
+swagger: "2.0"
+info:
+  version: "2019-04-17T18:59:57Z"
+  title: "PhotoCollection"
+host: "tx1rajwij4.execute-api.us-east-1.amazonaws.com"
+basePath: "/v1"
+schemes:
+- "https"
+paths:
+  /bucket/{item}:
+    post:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "Content-Type"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "item"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      security:
+      - api_key: []
+    delete:
+      produces:
+      - "application/json"
+      parameters:
+      - name: "item"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      security:
+      - api_key: []
+  /photo:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "text/html"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Content-type:
+              type: "string"
+  /photo/assunto:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          headers:
+            Content-type:
+              type: "string"
+  /photo/consulta:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+  /photo/{id}:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "x-api-key"
+    in: "header"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
